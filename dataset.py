@@ -18,8 +18,21 @@ class class_dataset:
             self.artificialDataset()
         elif self.name == "glcm":
             self.odilDataset()
-        elif self.name =="dissimilarity":
+        elif self.name == "dissimilarity":
             self.tenun_dissimilarity()
+        elif self.name == "alkohol":
+            self.alkoholDataset()
+
+    def alkoholDataset(self):
+        print("DATASET ALKOHOL")
+        df = genfromtxt('wine-clustering.csv', delimiter=',', skip_header=1)
+        self.X = df[:, 1:13]
+        y = df[:, 0:1]
+        yy = []
+        for i in range(len(y)):
+            # print(y[i][0])
+            yy.append(y[i][0])
+        self.y = yy
 
     def artificialDataset(self):
         print("DATASET 2D")
@@ -63,6 +76,7 @@ class class_dataset:
         # print(df.shape)
         self.X = df[:, 1:5]
         y = df[:, 25:26]
+        print(y)
         yy = []
         for i in range(len(y)):
             # print(y[i][0])
